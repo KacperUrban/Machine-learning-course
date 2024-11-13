@@ -154,6 +154,8 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# mlflow
+mlruns
 
 *.csv
 # PyCharm
