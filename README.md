@@ -4,7 +4,7 @@ This repo is a part of my study course on machine learning.
 # Table of content
 - [Data preprocessing](#Data-preprocessing)
 - [Data classification I](#Data-classification-I)
-- [Technologies](#Techonologies)
+- [Technologies](#Technologies)
 - [Status](#Status)
 # Data preprocessing
 This task was to get some knowledge about Pokemons dataset. So I have done:
@@ -26,6 +26,7 @@ That part of the project was mainly focused on to used numeric data to classify 
 - train few models: Logisitic Regression, SVM, Decision Tree, Random Forest, KNN
 - visualize confusion matrix
 - calculate few metrics: accuracy, precision, recall, f1-score
+- visualize comparison between metrics of diffrent models
 # Technologies
 - Pandas
 - Numpy
@@ -33,5 +34,6 @@ That part of the project was mainly focused on to used numeric data to classify 
 - Matplotlib
 - Seaborn
 - Missingno
+- Mlflow
 # Status
 The project is on going.
