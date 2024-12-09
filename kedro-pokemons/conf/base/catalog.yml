@@ -1,0 +1,7 @@
+pokemons:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/train_data.csv
+
+prepared_pokemons:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/prepared_pokemons.csv
