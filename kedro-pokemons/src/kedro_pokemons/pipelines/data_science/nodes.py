@@ -10,8 +10,7 @@ import numpy as np
 
 
 def split_data(
-    input_data: pd.DataFrame,
-    stratify: bool = False,
+    input_data: pd.DataFrame, parameters: dict
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     """This function split data into test and train sets
 
@@ -21,12 +20,16 @@ def split_data(
     Returns:
         tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]: four sets with train and test data
     """
-    X = input_data[["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"]]
-    y = input_data.Name
-    if stratify:
+    X = input_data[parameters["features"]]
+    y = input_data[parameters["label"]]
+    if parameters["stratify"]:
         X_train, X_test, y_train, y_test = train_test_split(
-        X, y, stratify=y, test_size=0.2, random_state=42
-    )
+            X,
+            y,
+            stratify=y,
+            test_size=parameters["test_size"],
+            random_state=parameters["random_state"],
+        )
     else:
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.2, random_state=42
@@ -52,7 +55,7 @@ def train_lr(
 
 
 def train_rf(
-    X_train: pd.DataFrame, y_train: pd.Series
+    X_train: pd.DataFrame, y_train: pd.Series, parameters: dict
 ) -> tuple[RandomForestClassifier, str]:
     """Function trains a random forest model
 
@@ -63,7 +66,7 @@ def train_rf(
     Returns:
         tuple[RandomForestClassifier, str]: trained classifier
     """
-    clf_rf = RandomForestClassifier(random_state=42)
+    clf_rf = RandomForestClassifier(random_state=parameters["random_state"])
     clf_rf.fit(X_train, y_train)
     return clf_rf, "random forest"
 
@@ -86,7 +89,7 @@ def train_knn(
 
 
 def train_dt(
-    X_train: pd.DataFrame, y_train: pd.Series
+    X_train: pd.DataFrame, y_train: pd.Series, parameters: dict
 ) -> tuple[DecisionTreeClassifier, str]:
     """Function trains a decision tree model
 
@@ -97,26 +100,9 @@ def train_dt(
     Returns:
         tuple[DecisionTreeClassifier, str]: trained classifier
     """
-    clf_rf = RandomForestClassifier(random_state=42)
+    clf_rf = RandomForestClassifier(random_state=parameters["random_state"])
     clf_rf.fit(X_train, y_train)
     return clf_rf, "decision tree"
-
-
-def train_rf(
-    X_train: pd.DataFrame, y_train: pd.Series
-) -> tuple[RandomForestClassifier, str]:
-    """Function trains a random forest model
-
-    Args:
-        X_train (pd.DataFrame): training features
-        y_train (pd.Series): training labels
-
-    Returns:
-        tuple[RandomForestClassifier, str]: trained classifier
-    """
-    clf_rf = RandomForestClassifier(random_state=42)
-    clf_rf.fit(X_train, y_train)
-    return clf_rf, "random forest"
 
 
 def evaluate_model(
@@ -141,4 +127,6 @@ def evaluate_model(
     """
     y_pred = clf.predict(X_test)
     print(f"Accuracy of {name}: {np.round(accuracy_score(y_test, y_pred), 3)}")
-    print(f"F1 score of {name}: {np.round(f1_score(y_test, y_pred, average="macro"), 3)}")
+    print(
+        f"F1 score of {name}: {np.round(f1_score(y_test, y_pred, average="macro"), 3)}"
+    )

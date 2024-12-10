@@ -1,0 +1,12 @@
+model_options:
+  test_size: 0.2
+  random_state: 42
+  stratify: True
+  features:
+    - HP
+    - Attack
+    - Defense
+    - Sp. Atk
+    - Sp. Def
+    - Speed
+  label: Name

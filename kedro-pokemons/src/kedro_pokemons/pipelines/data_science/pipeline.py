@@ -7,7 +7,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=split_data,
-                inputs="prepared_pokemons",
+                inputs=["prepared_pokemons", "params:model_options"],
                 outputs=["X_train", "X_test", "y_train", "y_test"],
                 name="split_data",
             ),
@@ -19,7 +19,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=train_dt,
-                inputs=["X_train", "y_train"],
+                inputs=["X_train", "y_train", "params:model_options"],
                 outputs=["clf_dt", "name_dt"],
                 name="train_decision_tree",
             ),
@@ -31,7 +31,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=train_rf,
-                inputs=["X_train", "y_train"],
+                inputs=["X_train", "y_train", "params:model_options"],
                 outputs=["clf_rf", "name_rf"],
                 name="train_random_forest",
             ),
