@@ -27,6 +27,12 @@ That part of the project was mainly focused on to used numeric data to classify 
 - visualize confusion matrix
 - calculate few metrics: accuracy, precision, recall, f1-score
 - visualize comparison between metrics of diffrent models
+  
+Additionaly I have created kedro pipeline. All second notebook I turned into a pipeline with kedro. Flow of data was divide into two part. One is data processing pipeline and second is data science pipeline. In data processing pipeline I did some basic transformation. In data science pipeline is focused on train diffrent models and asses it.
+
+![image](https://github.com/user-attachments/assets/19f8b453-0b1c-4987-a26d-b9be7dc7f2e5)
+![image](https://github.com/user-attachments/assets/743c6f3d-2e1b-43d0-afb0-7487215fe618)
+
 # Technologies
 - Pandas
 - Numpy
@@ -35,5 +41,6 @@ That part of the project was mainly focused on to used numeric data to classify 
 - Seaborn
 - Missingno
 - Mlflow
+- Kedro
 # Status
 The project is on going.
