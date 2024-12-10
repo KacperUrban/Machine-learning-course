@@ -11,6 +11,7 @@ import numpy as np
 
 def split_data(
     input_data: pd.DataFrame,
+    stratify: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     """This function split data into test and train sets
 
@@ -22,9 +23,14 @@ def split_data(
     """
     X = input_data[["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"]]
     y = input_data.Name
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+    if stratify:
+        X_train, X_test, y_train, y_test = train_test_split(
+        X, y, stratify=y, test_size=0.2, random_state=42
     )
+    else:
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
     return X_train, X_test, y_train, y_test
 
 
