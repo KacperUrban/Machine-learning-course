@@ -5,3 +5,19 @@ pokemons:
 prepared_pokemons:
   type: pandas.CSVDataset
   filepath: data/02_intermediate/prepared_pokemons.csv
+
+clf_rf:
+  type: pickle.PickleDataset
+  filepath: data/06_models/clf_rf.pickle
+
+clf_lr:
+  type: pickle.PickleDataset
+  filepath: data/06_models/clf_lr.pickle
+
+clf_dt:
+  type: pickle.PickleDataset
+  filepath: data/06_models/clf_dt.pickle
+
+clf_knn:
+  type: pickle.PickleDataset
+  filepath: data/06_models/clf_knn.pickle
