@@ -9,6 +9,7 @@ __pycache__/
 # db extensions
 *.db
 
+data
 # Distribution / packaging
 .Python
 build/

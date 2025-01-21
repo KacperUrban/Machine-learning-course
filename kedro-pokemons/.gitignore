@@ -11,6 +11,8 @@ conf/**/*credentials*
 # ignore everything in the following folders
 data/**
 
+.db
+
 # except their sub-folders
 !data/**/
 
